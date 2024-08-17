@@ -12,4 +12,9 @@ docker-compose up --build
 Após subir os containers basta executar o método `main` da classe [RetryApplication](/src/main/java/com/marcos/retry/RetryApplication.java).
 
 
-Para simular mensagens basta acessar o `kafka-ui` no endereço [localhost:8090](http://localhost:8090/)
+Para simular mensagens basta acessar o `kafka-ui` no endereço [localhost:8090](http://localhost:8090/) e postar uma mensagem no tópico `topic-1`. Exemplo:
+```json
+{
+  "text": "Mensagem de exemplo"
+}
+```
