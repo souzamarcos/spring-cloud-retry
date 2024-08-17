@@ -1,2 +1,2 @@
 # spring-cloud-retry
-Spring Cloud Kafka consumer example with Retry and DLT
+Exemplo de serviço consumindo tópico Kafka através do spring cloud com retry e dlt configurado
