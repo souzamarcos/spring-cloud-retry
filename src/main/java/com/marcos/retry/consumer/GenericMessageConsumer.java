@@ -8,11 +8,12 @@ import org.springframework.stereotype.Component;
 import java.util.function.Consumer;
 
 @Slf4j
-@Component
+@Component("genericMessageConsumer")
 public class GenericMessageConsumer implements Consumer<Message<GenericMessage>> {
 
     @Override
     public void accept(Message<GenericMessage> genericMessageMessage) {
-        log.info("Receiving message: {}", genericMessageMessage.getPayload());
+        log.info("Receiving message: [headers={}, payload={}]", genericMessageMessage.getHeaders(), genericMessageMessage.getPayload());
+        throw new NullPointerException("Example exception");
     }
 }

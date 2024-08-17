@@ -3,10 +3,16 @@ spring:
     name: retry
 
   cloud:
-    config:
-      enabled: true
-      uri: http://localhost:9092
     stream:
+      bindings:
+        genericMessageConsumer-in-0:
+          destination: topic-1
+          group: group-1
+          consumer:
+            maxAtttempts: 3
+            backOffInitialInterval: 2000
+            backOffMultipler: 2
+            backOffMaxInterval: 20000
       kafka:
         binder:
           brokers:
@@ -15,6 +21,10 @@ spring:
           autoCreateTopics: true
         bindings:
           genericMessageConsumer-in-0:
-            destination: topic-1
-            content-type: application/json
-            group: group-1
+            consumer:
+              max.poll.interval.ms: 300000
+              enableDlq: true
+              dlqName: topic-1-dlt
+              dlqProducerProperties:
+                configuration:
+                  value.serializer: org.apache.kafka.common.serialization.StringSerializer
