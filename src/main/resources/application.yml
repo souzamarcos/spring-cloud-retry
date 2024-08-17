@@ -25,6 +25,3 @@ spring:
               max.poll.interval.ms: 300000
               enableDlq: true
               dlqName: topic-1-dlt
-              dlqProducerProperties:
-                configuration:
-                  value.serializer: org.apache.kafka.common.serialization.StringSerializer
